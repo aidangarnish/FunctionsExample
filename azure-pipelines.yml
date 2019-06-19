@@ -17,17 +17,17 @@ variables:
 steps:
 - task: NuGetToolInstaller@0
 
+- task: UseDotNet@2
+  inputs:
+    packageType: 'sdk'
+    version: 2.2
+
 - task: NuGetCommand@2
   inputs:
     command: 'restore'
     restoreSolution: '**/*.sln'
     feedsToUse: 'select'
 
-- task: UseDotNet@2
-  inputs:
-    packageType: 'sdk'
-    version: 
-    
 - task: VSBuild@1
   inputs:
     solution: '$(solution)'
